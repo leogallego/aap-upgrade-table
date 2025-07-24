@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Static Table</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .slide-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 1000px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100%;
+            border-collapse: separate; /* Use separate for rounded corners on cells */
+            border-spacing: 0;
+            overflow: hidden; /* Ensures rounded corners are applied */
+        }
+        th, td {
+            padding: 14px 18px;
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb; /* Light grey border */
+            border-right: 1px solid #e5e7eb;
+        }
+        th:last-child, td:last-child {
+            border-right: none; /* No right border on the last column */
+        }
+        tr:last-child td {
+            border-bottom: none; /* No bottom border on the last row */
+        }
+        th {
+            background-color: #f3f4f6; /* Lighter grey for headers */
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+        tr:nth-child(even) {
+            background-color: #f9fafb; /* Very light grey for even rows */
+        }
+        .status-cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 500;
+            border-radius: 6px; /* Rounded corners for status indicators */
+            padding: 6px 12px;
+            margin: 0 auto; /* Center the badge within the cell */
+            width: fit-content; /* Shrink badge to content width */
+        }
+        .status-upgrade {
+            background-color: #d1fae5; /* Light green */
+            color: #059669; /* Darker green text */
+        }
+        .status-migrate {
+            background-color: #fef3c7; /* Light yellow */
+            color: #d97706; /* Darker yellow text */
+        }
+        .status-na {
+            background-color: #fee2e2; /* Light red */
+            color: #dc2626; /* Darker red text */
+        }
+        .status-icon {
+            font-size: 1.1rem;
+        }
+        .first-column-header {
+            text-align: left;
+            padding-left: 25px;
+        }
+        .first-column-data {
+            text-align: left;
+            font-weight: 500;
+            color: #1f2937;
+            padding-left: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">AAP Migration & Upgrade Matrix</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th class="first-column-header rounded-tl-lg">AAP Source / Target</th>
+                    <th class="rounded-tr-lg">AAP 2.6 RPM RHEL9</th>
+                    <th>AAP 2.6 Container RHEL9</th>
+                    <th>AAP 2.6 Container RHEL10</th>
+                    <th>AAP 2.6 OCP Operator</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="first-column-data">AAP 2.4 RPM RHEL 8</td>
+                    <td>
+                        <div class="status-cell status-migrate">
+                            <span class="status-icon">➡️</span> Migrate
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-migrate">
+                            <span class="status-icon">➡️</span> Migrate
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-migrate">
+                            <span class="status-icon">➡️</span> Migrate
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-migrate">
+                            <span class="status-icon">➡️</span> Migrate
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="first-column-data">AAP 2.4 RPM RHEL 9</td>
+                    <td>
+                        <div class="status-cell status-upgrade">
+                            <span class="status-icon">⬆️</span> Upgrade
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-migrate">
+                            <span class="status-icon">➡️</span> Migrate
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-migrate">
+                            <span class="status-icon">➡️</span> Migrate
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-migrate">
+                            <span class="status-icon">➡️</span> Migrate
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="first-column-data">AAP 2.4 OCP Operator</td>
+                    <td>
+                        <div class="status-cell status-na">
+                            <span class="status-icon">🚫</span> NA
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-na">
+                            <span class="status-icon">🚫</span> NA
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-na">
+                            <span class="status-icon">🚫</span> NA
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-upgrade">
+                            <span class="status-icon">⬆️</span> Upgrade
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="first-column-data">AAP 2.5 RPM RHEL 8</td>
+                    <td>
+                        <div class="status-cell status-migrate">
+                            <span class="status-icon">➡️</span> Migrate
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-migrate">
+                            <span class="status-icon">➡️</span> Migrate
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-migrate">
+                            <span class="status-icon">➡️</span> Migrate
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-migrate">
+                            <span class="status-icon">➡️</span> Migrate
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="first-column-data">AAP 2.5 RPM RHEL 9</td>
+                    <td>
+                        <div class="status-cell status-upgrade">
+                            <span class="status-icon">⬆️</span> Upgrade
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-migrate">
+                            <span class="status-icon">➡️</span> Migrate
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-migrate">
+                            <span class="status-icon">➡️</span> Migrate
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-migrate">
+                            <span class="status-icon">➡️</span> Migrate
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="first-column-data">AAP 2.5 Container RHEL 9</td>
+                    <td>
+                        <div class="status-cell status-na">
+                            <span class="status-icon">🚫</span> NA
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-upgrade">
+                            <span class="status-icon">⬆️</span> Upgrade
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-migrate">
+                            <span class="status-icon">➡️</span> Migrate
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-migrate">
+                            <span class="status-icon">➡️</span> Migrate
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="first-column-data rounded-bl-lg">AAP 2.5 Container RHEL 10</td>
+                    <td>
+                        <div class="status-cell status-na">
+                            <span class="status-icon">🚫</span> NA
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-na">
+                            <span class="status-icon">🚫</span> NA
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-upgrade">
+                            <span class="status-icon">⬆️</span> Upgrade
+                        </div>
+                    </td>
+                    <td class="rounded-br-lg">
+                        <div class="status-cell status-migrate">
+                            <span class="status-icon">➡️</span> Migrate
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="first-column-data">AAP 2.5 OCP Operator</td>
+                    <td>
+                        <div class="status-cell status-na">
+                            <span class="status-icon">🚫</span> NA
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-na">
+                            <span class="status-icon">🚫</span> NA
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-na">
+                            <span class="status-icon">🚫</span> NA
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-cell status-upgrade">
+                            <span class="status-icon">⬆️</span> Upgrade
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
